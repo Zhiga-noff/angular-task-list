@@ -1,0 +1,169 @@
+.app {
+  max-width: 90%;
+  margin: 10rem auto;
+  background-color: white;
+
+  border: 1px solid #ededed;
+}
+
+.form {
+  padding: 3rem 3rem;
+  background: linear-gradient(109.8deg, #8e38a6 7.02%, #6746ee 94.32%);
+}
+
+.title {
+  font-size: 5rem;
+  color: white;
+}
+
+.flexField {
+  display: flex;
+  justify-content: stretch;
+}
+
+.flexForm {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flexForm a {
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.field {
+  padding: 1rem 2rem;
+  width: 30rem;
+  margin-right: 1rem;
+  font-size: 1rem;
+}
+
+.button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(98.66deg, #1CD8D2 0%, #93EDC7 100%);
+  border: none;
+}
+
+.buttonOrange {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(98.66deg, #E65C00 0%, #F9D423 67.46%);
+  border: none;
+
+}
+
+.button:disabled, buttonOrange:disabled {
+  opacity: 0.4;
+}
+
+.buttonGrey{
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(98.66deg, #83A4D4 25.37%, #B6FBFF 100%);
+  border: none;
+  margin-right: 1rem;
+}
+
+.buttonRed {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #E52D27 0%, #B31217 100%);
+  border: none;
+}
+
+.taskList {
+  padding: 3rem 3rem;
+}
+
+.task {
+  padding: 1rem 1.5rem;
+  list-style: none;
+  border-bottom: 1px solid #ededed;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task p {
+  max-width: 250px;
+  white-space: nowrap; /* Текст не переносится */
+  overflow: hidden; /* Обрезаем всё за пределами блока */
+  text-overflow: ellipsis; /* Добавляем многоточие */
+}
+
+.task a {
+  color: black;
+  text-decoration: none;
+  transition-duration: 0.3s;
+}
+
+.task a:hover {
+  color: #8e38a6;
+}
+
+.icons {
+  display: flex;
+
+}
+
+.icons a {
+  width: 38px;
+  height: 38px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25px;
+  height: 25px;
+  border: 6px solid;
+
+  border-image-source: linear-gradient(109.8deg, #8e38a6 7.02%, #6746ee 94.32%);
+
+  /*border-radius: 50%;*/
+  border-left-color: transparent;
+  animation: loader 1s infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.notFoundBox {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.buttonHome {
+  background: linear-gradient(109.8deg, #8e38a6 7.02%, #6746ee 94.32%);
+  padding: 1rem 2rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 4rem;
+}
