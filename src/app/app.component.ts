@@ -1,11 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FetchTaskService } from './fetch-task.service';
+import { UserInterface } from '../interfaces/user-interface';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'angular-task-list';
-  isLoading = true
+export class AppComponent implements OnInit {
+  taskList: any;
+  isLoading: boolean = true;
+
+  constructor(private _fetchTaskService: FetchTaskService) {}
+
+  ngOnInit() {
+    this.taskList = this._fetchTaskService.getTask.subscribe(
+      (tasks) => (this.taskList = tasks),
+    );
+    if (!this.taskList) {
+      return;
+    }
+    this.isLoading = false;
+  }
 }
