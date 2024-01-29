@@ -6,12 +6,14 @@ import { FormFieldTaskComponent } from './form-field-task/form-field-task.compon
 import { TaskNameComponent } from './task-name/task-name.component';
 import {FetchTaskService} from "./fetch-task.service";
 import {HttpClientModule} from "@angular/common/http";
+import { ButtonControllerComponent } from './button-controller/button-controller.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormFieldTaskComponent,
-    TaskNameComponent
+    TaskNameComponent,
+    ButtonControllerComponent
   ],
   imports: [
     BrowserModule, HttpClientModule

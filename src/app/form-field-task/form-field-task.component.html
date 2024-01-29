@@ -2,8 +2,13 @@
   <p class="title">Тут твои задачи</p>
   <div class="flexForm">
     <div class="flexField">
-      <input class="field" type="text" name="fieldNewTask">
+      <input class="field" type="text" name="fieldNewTask"
+             placeholder="Напишите что вы хотите сделать">
       <button class="button">Добавить задачу</button>
+    </div>
+    <div class="flexField">
+      <app-button-controller [typeButton]="'filter'"></app-button-controller>
+      <app-button-controller [typeButton]="'search'"></app-button-controller>
     </div>
   </div>
 </form>
