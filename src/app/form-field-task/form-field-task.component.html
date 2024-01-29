@@ -1,9 +1,10 @@
-<form action="#" class="form">
+<form action="#" class="form" (ngSubmit)="SubmitTask()">
   <p class="title">Тут твои задачи</p>
   <div class="flexForm">
     <div class="flexField">
       <input class="field" type="text" name="fieldNewTask"
-             placeholder="Напишите что вы хотите сделать">
+             placeholder="Напишите что вы хотите сделать"
+             (input)="onChangeInput($event.target['value'])">
       <button class="button">Добавить задачу</button>
     </div>
     <div class="flexField">

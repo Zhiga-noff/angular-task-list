@@ -1,13 +1,24 @@
-import {Component, Input} from '@angular/core';
-import {UserInterface} from "../../interfaces/user-interface";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { UserInterface } from '../../interfaces/user-interface';
+import { FetchTaskService } from '../fetch-task.service';
 
 @Component({
   selector: 'app-task-name',
   templateUrl: './task-name.component.html',
-  styleUrls: ['./task-name.component.scss']
+  styleUrls: ['./task-name.component.scss'],
 })
 export class TaskNameComponent {
-  @Input('task') task:UserInterface | undefined
+  @Input('task') task: UserInterface | undefined;
+  @Input() taskList: UserInterface[] | undefined;
+  @Output() taskListUpdate: EventEmitter<UserInterface[]> = new EventEmitter();
 
+  constructor(private _fetchTaskService: FetchTaskService) {}
 
+  delete() {
+    this._fetchTaskService.deleteTask(this.task!.id).subscribe();
+    const newTaskList = this.taskList!.filter(
+      (taskFilter) => taskFilter.id !== this.task!.id,
+    );
+    this.taskListUpdate.emit(newTaskList);
+  }
 }

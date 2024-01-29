@@ -1,5 +1,5 @@
 <p>{{task?.title}}</p>
 <div class="icons">
   <app-button-controller [typeButton]="'edit'"></app-button-controller>
-  <app-button-controller [typeButton]="'del'"></app-button-controller>
+  <app-button-controller [typeButton]="'del'" (click)="delete()"></app-button-controller>
 </div>
