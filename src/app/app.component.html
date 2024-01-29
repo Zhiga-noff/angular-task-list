@@ -1,7 +1,10 @@
 <div class="app">
   <app-form-field-task />
-  <ul class="taskList">
+  <ul class="taskList" *ngIf="!isLoading" >
         <div class="loader" *ngIf="isLoading" ></div>
-    <li *ngIf="!isLoading" class="task"></li>
+    <li class="task" *ngFor="let task of taskList">
+      <app-task-name [task]="task"></app-task-name>
+    </li>
   </ul>
+  <div class="loader" *ngIf="isLoading" ></div>
 </div>

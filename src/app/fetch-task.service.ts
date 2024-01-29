@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {UserInterface} from "../interfaces/user-interface";
 
-@Injectable()
+@Injectable({
+  providedIn:'root'
+})
+
 export class FetchTaskService {
+  private apiUrl = 'https://jsonplaceholder.typicode.com/todos/?_limit=30'
 
   constructor(private _http: HttpClient) { }
 
-  get getTask() {
-    return this._http.get('https://jsonplaceholder.typicode.com/todos/?_limit=30')
+  getTask(): Observable<UserInterface[]> {
+    return this._http.get<UserInterface[]>(this.apiUrl)
   }
 }

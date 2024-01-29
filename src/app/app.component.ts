@@ -8,18 +8,24 @@ import { UserInterface } from '../interfaces/user-interface';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  taskList: any;
+  taskList: UserInterface[] | [] = [];
   isLoading: boolean = true;
 
   constructor(private _fetchTaskService: FetchTaskService) {}
 
   ngOnInit() {
-    this.taskList = this._fetchTaskService.getTask.subscribe(
-      (tasks) => (this.taskList = tasks),
-    );
+    this.fetchTask()
     if (!this.taskList) {
       return;
     }
     this.isLoading = false;
+  }
+
+  fetchTask() {
+    this._fetchTaskService.getTask().subscribe(
+      (tasks) => {
+        this.taskList = tasks
+      },
+    );
   }
 }
