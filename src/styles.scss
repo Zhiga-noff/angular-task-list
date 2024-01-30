@@ -117,3 +117,16 @@ code {
     transform: rotate(360deg);
   }
 }
+
+.edit {
+  padding: 1.6rem 0;
+
+  //border-bottom: 1px solid #ededed;
+  border: inherit;
+  width: 40%;
+  //margin-bottom: 1rem;
+  font-size: 1.5rem;
+  //display: flex;
+  //justify-content: space-between;
+  //align-items: center;
+}

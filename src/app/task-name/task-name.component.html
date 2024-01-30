@@ -1,5 +1,5 @@
 <p *ngIf="!editFlag">{{task?.title}}</p>
-<input *ngIf="editFlag" type="text" name="task"
+<input class="edit" *ngIf="editFlag" type="text" name="task"
        [(ngModel)]="task.title"
        (keydown.enter)="edit()">
 <div class="icons">
