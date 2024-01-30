@@ -12,6 +12,8 @@ export class TaskNameComponent {
   @Input() taskList: UserInterface[] | undefined;
   @Output() taskListUpdate: EventEmitter<UserInterface[]> = new EventEmitter();
 
+  editFlag: boolean = false;
+
   constructor(private _fetchTaskService: FetchTaskService) {}
 
   delete() {
@@ -20,5 +22,14 @@ export class TaskNameComponent {
       (taskFilter) => taskFilter.id !== this.task!.id,
     );
     this.taskListUpdate.emit(newTaskList);
+  }
+
+  edit() {
+    if (this.editFlag) {
+      this._fetchTaskService
+        .editTask(this.task.id, this.task.title)
+        .subscribe();
+    }
+    this.editFlag = !this.editFlag;
   }
 }

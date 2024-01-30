@@ -23,4 +23,8 @@ export class FetchTaskService {
   addNewTask(newTask: UserInterface) {
     return this._http.post(this.apiUrl, newTask);
   }
+
+  editTask(taskId: number | string, task: string) {
+    return this._http.put(`${this.apiUrl}/${taskId}`, { title: task });
+  }
 }

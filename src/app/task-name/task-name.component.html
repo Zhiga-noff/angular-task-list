@@ -1,5 +1,8 @@
-<p>{{task?.title}}</p>
+<p *ngIf="!editFlag">{{task?.title}}</p>
+<input *ngIf="editFlag" type="text" name="task"
+       [(ngModel)]="task.title"
+       (keydown.enter)="edit()">
 <div class="icons">
-  <app-button-controller [typeButton]="'edit'"></app-button-controller>
+  <app-button-controller [typeButton]="'edit'" (click)="edit()"></app-button-controller>
   <app-button-controller [typeButton]="'del'" (click)="delete()"></app-button-controller>
 </div>
