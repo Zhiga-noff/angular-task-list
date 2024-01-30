@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FetchTaskService } from '../fetch-task.service';
+import { UserInterface } from '../../interfaces/user-interface';
 
 @Component({
   selector: 'app-form-field-task',
@@ -7,22 +8,31 @@ import { FetchTaskService } from '../fetch-task.service';
   styleUrls: ['./form-field-task.component.scss'],
 })
 export class FormFieldTaskComponent {
+  @Input() taskList: UserInterface[];
+  @Output() taskListUpdate: EventEmitter<UserInterface[]> = new EventEmitter();
   taskValue: string = '';
+  newTask: UserInterface = { title: '', id: '' };
 
   constructor(private _fetchTaskService: FetchTaskService) {}
 
   SubmitTask() {
-    console.log(this.reformatValue(this.taskValue));
+    this.reformatValue(this.taskValue);
+    this._fetchTaskService.addNewTask(this.newTask).subscribe();
+    this.taskListUpdate.emit(this.taskList);
+    this.taskValue = '';
   }
 
-  onChangeInput(value: string = '') {
-    console.log('Введено: ' + value);
+  onChangeInput(value: string | null = '') {
+    this.taskValue = value;
   }
 
-  reformatValue(value: string | null) {
-    if (!value) {
-      return;
-    }
-    return value.trim();
+  reformatValue(value?: string) {
+    this.taskValue = value.trim();
+    const idTask = Math.floor(Math.random() * 100) + 1;
+    this.newTask = {
+      title: this.taskValue,
+      id: `${idTask}`,
+    };
+    this.taskList.push(this.newTask);
   }
 }

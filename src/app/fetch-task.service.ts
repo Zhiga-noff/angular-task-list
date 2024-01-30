@@ -15,11 +15,12 @@ export class FetchTaskService {
     return this._http.get<UserInterface[]>(this.apiUrl);
   }
 
-  deleteTask(idTask: number) {
+  deleteTask(idTask: number | string) {
+    console.log(idTask);
     return this._http.delete(`${this.apiUrl}/${idTask}`);
   }
 
-  addNewTask(newTask: string) {
+  addNewTask(newTask: UserInterface) {
     return this._http.post(this.apiUrl, newTask);
   }
 }

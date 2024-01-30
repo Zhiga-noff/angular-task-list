@@ -4,7 +4,8 @@
     <div class="flexField">
       <input class="field" type="text" name="fieldNewTask"
              placeholder="Напишите что вы хотите сделать"
-             (input)="onChangeInput($event.target['value'])">
+             (input)="onChangeInput($event.target['value'])"
+             [(ngModel)]="taskValue">
       <button class="button">Добавить задачу</button>
     </div>
     <div class="flexField">

@@ -1,5 +1,6 @@
 <div class="app">
-  <app-form-field-task/>
+  <app-form-field-task [taskList]="taskList"
+                       (taskListUpdate)="updateTaskList($event)"/>
   <ul class="taskList" *ngIf="!isLoading">
     <li *ngFor="let task of taskList">
       <app-task-name class="task" [task]="task" [taskList]="taskList"
