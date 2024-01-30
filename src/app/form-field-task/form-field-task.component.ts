@@ -14,7 +14,9 @@ export class FormFieldTaskComponent {
 
   taskValue: string = '';
   newTask: UserInterface = { title: '', id: '' };
+
   searchFlag: boolean = false;
+  reverseFlag: 'a > b' | 'b > a' | 'random' = 'random';
 
   constructor(private _fetchTaskService: FetchTaskService) {}
 
@@ -49,5 +51,31 @@ export class FormFieldTaskComponent {
     this._fetchTaskService.getTask().subscribe((tasks) => {
       this.taskListUpdate.emit(tasks);
     });
+  }
+
+  revers() {
+    switch (this.reverseFlag) {
+      case 'a > b': {
+        this.reverseFlag = 'b > a';
+        this.taskList.reverse();
+        this.taskListUpdate.emit(this.taskList);
+        return;
+      }
+      default: {
+        this.reverseFlag = 'a > b';
+        this.taskList.sort((a: UserInterface, b: UserInterface) => {
+          const titleA = a.title.toLowerCase();
+          const titleB = b.title.toLowerCase();
+          if (titleA > titleB) {
+            return 1;
+          } else if (titleA < titleB) {
+            return -1;
+          } else {
+            return 0;
+          }
+        });
+        this.taskListUpdate.emit(this.taskList);
+      }
+    }
   }
 }

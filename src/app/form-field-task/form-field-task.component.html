@@ -13,7 +13,7 @@
       </button>
     </div>
     <div class="flexField">
-      <app-button-controller [typeButton]="'filter'"></app-button-controller>
+      <app-button-controller [typeButton]="'filter'" (click)="revers()"></app-button-controller>
       <app-button-controller [typeButton]="'search'" (click)="searchFlag = !searchFlag"></app-button-controller>
     </div>
   </div>
