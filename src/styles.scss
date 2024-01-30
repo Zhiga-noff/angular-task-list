@@ -130,3 +130,22 @@ code {
   //justify-content: space-between;
   //align-items: center;
 }
+
+.buttonGrey {
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(98.66deg, #83A4D4 25.37%, #B6FBFF 100%);
+  border: none;
+  margin-right: 1rem;
+}
+
+.buttonRed {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #E52D27 0%, #B31217 100%);
+  border: none;
+}

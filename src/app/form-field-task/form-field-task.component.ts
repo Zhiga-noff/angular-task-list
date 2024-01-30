@@ -10,12 +10,19 @@ import { UserInterface } from '../../interfaces/user-interface';
 export class FormFieldTaskComponent {
   @Input() taskList: UserInterface[];
   @Output() taskListUpdate: EventEmitter<UserInterface[]> = new EventEmitter();
+  @Output() searchValue: EventEmitter<string> = new EventEmitter();
+
   taskValue: string = '';
   newTask: UserInterface = { title: '', id: '' };
+  searchFlag: boolean = false;
 
   constructor(private _fetchTaskService: FetchTaskService) {}
 
   SubmitTask() {
+    if (this.searchFlag) {
+      this.searchValue.emit(this.taskValue);
+      return;
+    }
     this.reformatValue(this.taskValue);
     this._fetchTaskService.addNewTask(this.newTask).subscribe();
     this.taskListUpdate.emit(this.taskList);
@@ -34,5 +41,13 @@ export class FormFieldTaskComponent {
       id: `${idTask}`,
     };
     this.taskList.push(this.newTask);
+  }
+
+  closeSearch() {
+    this.taskValue = '';
+    this.searchFlag = false;
+    this._fetchTaskService.getTask().subscribe((tasks) => {
+      this.taskListUpdate.emit(tasks);
+    });
   }
 }

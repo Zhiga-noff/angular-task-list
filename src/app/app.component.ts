@@ -27,4 +27,16 @@ export class AppComponent implements OnInit {
   updateTaskList(event: UserInterface[]) {
     this.taskList = event;
   }
+
+  searchInTaskList(event: string) {
+    const arrayTemplate: UserInterface[] = [];
+    this.taskList.forEach((task) => {
+      const title = task.title.toLowerCase();
+      if (title.includes(event.toLowerCase())) {
+        arrayTemplate.push(task);
+      }
+    });
+
+    this.taskList = arrayTemplate;
+  }
 }
